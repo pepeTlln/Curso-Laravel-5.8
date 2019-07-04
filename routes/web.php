@@ -28,3 +28,12 @@ Route::get('user/{name}', function ($name) {
     return view ('welcome'); //solo si nombre comienza por una letra
 })->where('name', '[A-Za-z]+');
 
+
+//Va en el programa no es ejemplo
+//Route::get('admin/permiso', 'Admin/PermisoController1@index')->name('permiso');
+Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
+    Route::get('permiso', 'PermisoController1@index')->name('permiso');
+    Route::get('permiso/crear', 'PermisoController1@crear')->name('crear_permiso');
+    Route::get('menu/crear', 'MenuController@crear')->name('crear_menu');
+});
+
